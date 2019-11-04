@@ -8,15 +8,18 @@ public class Houses {
 		this.rob = new Robot();
 	}
 
-	public void drawHouse() {
+	public void drawHouse(int height) {
 		rob.setPenColor(255,0,0);
 		rob.setSpeed(100);
 		rob.penDown();
-		rob.move(100);
+		// draw left side
+		rob.move(height);
+		// draw roof
 		rob.turn(90);
 		rob.move(30);
 		rob.turn(90);
-		rob.move(100);
+		// draw right side
+		rob.move(height);
 		// draw green grass
 		rob.turn(-90);
 
@@ -29,7 +32,7 @@ public class Houses {
 		rob.moveTo(10,300);
 
 		for (int i = 0; i <10 ; i++) {
-			drawHouse();
+			drawHouse((i+1)*10);
 		}
 
 
