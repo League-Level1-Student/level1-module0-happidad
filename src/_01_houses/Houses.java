@@ -14,14 +14,14 @@ public class Houses {
 		rob.penDown();
 		rob.move(100);
 		rob.turn(90);
-		rob.move(10);
+		rob.move(30);
 		rob.turn(90);
 		rob.move(100);
 		// draw green grass
 		rob.turn(-90);
 
 		rob.setPenColor(96,128,56);
-		rob.move(10);
+		rob.move(30);
 		rob.turn(-90);
 	}
 	public void run() {
