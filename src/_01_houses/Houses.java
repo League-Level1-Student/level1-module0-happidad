@@ -9,22 +9,48 @@ public class Houses {
         this.rob = new Robot();
     }
 
-    public void drawHouse(String size) {
-        if (size.equals("small")) drawHouse(60);
-        else if (size.equals("medium")) drawHouse(120);
-        else if (size.equals("large")) drawHouse(250);
+    public void drawHouse(String size, String color, String roof) {
+        if (size.equals("small")) drawSquareRoofHouse(60,color);
+        else if (size.equals("medium")) drawSquareRoofHouse(120,color);
+        else if (size.equals("large")) drawSquareRoofHouse(250,color);
     }
-
-    public void drawHouse(int height) {
-        rob.setPenColor(255, 0, 0);
-        rob.setSpeed(100);
-        rob.penDown();
-        // draw left side
-        rob.move(height);
+    public void drawSquareRoof(){
         // draw roof
         rob.turn(90);
         rob.move(30);
         rob.turn(90);
+    }
+
+    public void drawPeakedRoof(){
+        // draw roof
+        rob.turn(45);
+        rob.move(25);
+        rob.turn(90);
+        rob.move(25);
+        rob.turn(45);
+
+    }
+
+    public void drawPeakedRoofHouse( int height, String color ){
+        drawHouse(height,color,"peaked");
+    }
+
+    public void drawSquareRoofHouse( int height, String color ){
+        drawHouse(height,color,"square");
+    }
+    public void drawHouse(int height, String color, String roof) {
+        if (color.equals("red")) rob.setPenColor(255, 0, 0);
+        else if (color.equals("green")) rob.setPenColor(0, 255, 0);
+        else if (color.equals("blue")) rob.setPenColor(0, 0, 255);
+        else rob.setPenColor(0, 0, 0);
+        rob.setSpeed(100);
+        rob.penDown();
+        // draw left side
+        rob.move(height);
+
+        if (roof.equals("peaked")) drawPeakedRoof();
+        else drawSquareRoof();
+
         // draw right side
         rob.move(height);
         // draw green grass
@@ -40,12 +66,12 @@ public class Houses {
         rob.moveTo(10, 500);
 
         for (int i = 0; i < 10; i++) {
-            drawHouse((i + 1) * 10);
+            drawPeakedRoofHouse((i + 1) * 10,"red");
         }
 
-        drawHouse("small");
-        drawHouse("medium");
-        drawHouse("large");
+        drawHouse("small","blue","square");
+        drawHouse("medium","green", "square");
+        drawHouse("large","unknown", "square");
 
 
         // move robot out of the way
