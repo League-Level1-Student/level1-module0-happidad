@@ -10,8 +10,8 @@ public class Houses {
     }
 
     public void drawHouse(String size, String color, String roof) {
-        if (size.equals("small")) drawSquareRoofHouse(60,color);
-        else if (size.equals("medium")) drawSquareRoofHouse(120,color);
+        if (size.equals("small")) drawPeakedRoofHouse(60,color);
+        else if (size.equals("medium")) drawPeakedRoofHouse(120,color);
         else if (size.equals("large")) drawSquareRoofHouse(250,color);
     }
     public void drawSquareRoof(){
